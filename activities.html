@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Activities – LONG – International Family Movement</title>
+    
+    <!-- Premium Google Fonts: Montserrat & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PREMIUM DESIGN SYSTEM --- */
+        :root {
+            --primary: #0284c7;        
+            --primary-light: #e0f2fe;  
+            --accent: #f59e0b;         
+            --accent-dark: #d97706;
+            --text-main: #0f172a;      
+            --text-muted: #475569;     
+            --bg-light: #f8fafc;       
+            --white: #ffffff;
+            --font-global: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-global);
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MODERN NAVBAR --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
+        .logo i { color: var(--primary); }
+        .logo span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary); }
+
+        /* --- HERO HEADER --- */
+        .activities-hero {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 180px 0 100px 0;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .activities-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .activities-hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- DYNAMIC FILTER SYSTEM --- */
+        section { padding: 80px 0; }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            font-family: var(--font-global);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            background-color: var(--white);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--text-main);
+            color: var(--white);
+            border-color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        /* --- ACTIVITIES ISOMORPHIC GRID --- */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .activity-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity-card.hidden {
+            display: none;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+       }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        }
+
+        .activity-media {
+            position: relative;
+            height: 240px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .activity-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .activity-card:hover .activity-media img {
+            transform: scale(1.06);
+        }
+
+        .media-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 6px 14px;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
+            transition: var(--transition);
+        }
+
+        .activity-card:hover .video-play-btn {
+            background-color: var(--accent);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .activity-body {
+            padding: 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .activity-body h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .activity-body p {
+            color: var(--text-muted);
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .activity-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .activity-footer span i {
+            color: var(--primary);
+            margin-right: 6px;
+        }
+
+        .report-download-link {
+            color: var(--primary);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .report-download-link:hover { color: var(--text-main); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            padding: 60px 0 40px 0;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-people-roof"></i> LONG <span>Movement</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">Who We Are</a></li>
+                <li><a href="activities.html" class="nav-link">Activities</a></li>
+                <li><a href="programms.html" class="nav-link">Programs</a></li>
+                <li><a href="volunteers.html" class="nav-link">Volunteers</a></li>
+                <li><a href="donation.html" class="btn btn-cta">Donation</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="activities-hero">
+        <div class="container">
+            <h1 class="reveal">Our Field Activities</h1>
+            <p class="reveal delay-1">Discover our community movements, field logs, resource distribution pipelines, and structural impact metrics.</p>
+        </div>
+    </header>
+
+    <!-- DYNAMIC DASHBOARD COMPONENT -->
+    <main class="container">
+        <section>
+            
+            <!-- Filters Engine Handles -->
+            <div class="filter-container reveal">
+                <button class="filter-btn active" data-filter="all">All Activities</button>
+                <button class="filter-btn" data-filter="photos">Photos</button>
+                <button class="filter-btn" data-filter="videos">Videos</button>
+                <button class="filter-btn" data-filter="reports">Reports</button>
+                <button class="filter-btn" data-filter="events">Community Events</button>
+                <button class="filter-btn" data-filter="food">Food Distributions</button>
+                <button class="filter-btn" data-filter="youth">Youth Camps</button>
+                <button class="filter-btn" data-filter="seminars">Seminars & Training</button>
+                <button class="filter-btn" data-filter="volunteers">Volunteer Actions</button>
+            </div>
+
+            <!-- Dashboard Display Cards -->
+            <div class="activities-grid">
+                
+                <!-- Activity 1: Food Distribution (Photo) -->
+                <div class="activity-card reveal food photos" data-type="food photos">
+                    <div class="activity-media">
+                        <span class="media-badge"><i class="fa-solid fa-camera"></i> Photo</span>
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" alt="Food Distribution">
+                    </div>
+                    <div class="activity-body">
+                        <h3>Nutritional Package Distribution</h3>
+                        <p>Providing direct baseline nutritional parcels and clean drinking units to isolated family houses.</p>
+                        <div class="activity-footer">
+                            <span><i class="fa-solid fa-calendar-days"></i> June 2026</span>
+                            <span>Cameroon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 2: Youth Camp (Video) -->
+                <div class="activity-card reveal youth videos" data-type="youth videos">
+                    <div class="activity-media">
+                        <span class="media-badge"><i class="fa-solid fa-video"></i> Video</span>
+                        <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Youth Leadership Camp">
+                    </div>
+                    <div class="activity-body">
+                        <h3>Annual Youth Resilience Camp</h3>
+                        <p>A full recap video showing team-building exercises, technical courses, and personal growth mentorship.</p>
+                        <div class="activity-footer">
+                            <span><i class="fa-solid fa-calendar-days"></i> May 2026</span>
+                            <span>Philippines</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 3: Educational Seminar (Seminar) -->
+                <div class="activity-card reveal seminars photos" data-type="seminars photos">
+                    <div class="activity-media">
+                        <span class="media-badge"><i class="fa-solid fa-camera"></i> Photo</span>
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" alt="Seminar">
+                    </div>
+                    <div class="activity-body">
+                        <h3>Psychological Awareness Seminar</h3>
+                        <p>Promoting emotional health systems and training local educators on foundational mental resilience techniques.</p>
+                        <div class="activity-footer">
+                            <span><i class="fa-solid fa-calendar-days"></i> April 2026</span>
+                            <span>Japan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 4: Report (Reports) -->
+                <div class="activity-card reveal reports" data-type="reports">
+                    <div class="activity-media">
+                        <span class="media-badge" style="background-color: var(--accent-dark);"><i class="fa-solid fa-file-invoice"></i> Report</span>
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Annual Impact Report">
+                    </div>
+                    <div class="activity-body">
+                        <h3>Q1 Community Impact Report</h3>
+                        <p>Our audited, comprehensive data logging structural progress updates across child welfare indicators and resource distribution.</p>
+                        <div class="activity-footer">
+                            <span><i class="fa-solid fa-file-pdf"></i> PDF Format</span>
+                            <a href="#" class="report-download-link">Download <i class="fa-solid fa-download"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 5: Volunteer Action (Volunteers) -->
+                <div class="activity-card reveal volunteers events" data-type="volunteers events">
+                    <div class="activity-media">
+                        <span class="media-badge"><i class="fa-solid fa-camera"></i> Photo</span>
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=80" alt="Volunteers meeting">
+                    </div>
+                    <div class="activity-body">
+                        <h3>International Solidarity Gathering</h3>
+                        <p>Connecting regional networks to align on development strategies and support structures for field workers.</p>
+                        <div class="activity-footer">
+                            <span><i class="fa-solid fa-calendar-days"></i> March 2026</span>
+                            <span>Global Network</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 6: Leadership Training (Seminars) -->
+                <div class="activity-card reveal seminars leadership" data-type="seminars leadership">
+                    <div class="activity-media">
+                        <span class="media-badge"><i class="fa-solid fa-video"></i> Video</span>
+                        <div class="video-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Leadership Training">
+                    </div>
+                    <div class="activity-body">
+                        <h3>Next-Gen Leadership Training</h3>
+                        <p>Equipping young leaders with social innovation methodologies, project planning, and communication toolkits.</p>
+                        <div class="activity-footer">
+                            <span><i class="fa-solid fa-calendar-days"></i> February 2026</span>
+                            <span>Philippines</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LONG – International Family Movement. All Rights Reserved. | Transparency & Human Dignity First.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE GALERY & OBSERVER SCRIPTS -->
+    <script>
+        // --- ISOMORPHIC FILTERING INTERACTION ENGINE ---
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const activityCards = document.querySelectorAll('.activity-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active status from previous highlights
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const selectedFilter = button.dataset.filter;
+
+                activityCards.forEach(card => {
+                    if (selectedFilter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        // Check if item contains target classification values inside string
+                        if (card.classList.contains(selectedFilter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // --- INTERSECTION OBSERVER ANIMATION ENGINE ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

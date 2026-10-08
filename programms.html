@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programs – LONG – International Family Movement</title>
+    
+    <!-- Premium Google Fonts: Montserrat & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PREMIUM DESIGN SYSTEM --- */
+        :root {
+            --primary: #0284c7;        
+            --primary-light: #e0f2fe;  
+            --accent: #f59e0b;         
+            --accent-dark: #d97706;
+            --text-main: #0f172a;      
+            --text-muted: #475569;     
+            --bg-light: #f8fafc;       
+            --white: #ffffff;
+            --font-global: 'Montserrat', sans-serif;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-global);
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* --- MODERN NAVBAR --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
+        .logo i { color: var(--primary); }
+        .logo span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary); }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 14px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            gap: 10px;
+        }
+
+        .btn-cta { background-color: var(--text-main); color: var(--white); }
+        .btn-cta:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(2, 132, 199, 0.2);
+        }
+
+        /* --- HERO HEADER --- */
+        .programs-hero {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 180px 0 100px 0;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .programs-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .programs-hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- CORE PROGRAMS GRID --- */
+        section { padding: 100px 0; }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px auto;
+        }
+
+        .section-intro h2 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .section-intro p {
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+
+        .program-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+            border-color: rgba(2, 132, 199, 0.1);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+       }
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--bg-light);
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 28px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-icon {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .program-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .program-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .program-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-link {
+            color: var(--text-main);
+        }
+
+        /* --- HUMANITARIAN ASSISTANCE SECTION --- */
+        .humanitarian-section {
+            background-color: var(--bg-light);
+        }
+
+        .humanitarian-wrapper {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .humanitarian-content h2 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .humanitarian-content p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .assistance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .assistance-box {
+            background-color: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .assistance-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+            border-top-color: var(--accent);
+        }
+
+        .assistance-box i {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .assistance-box h4 {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            padding: 60px 0 40px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 968px) {
+            .humanitarian-wrapper { grid-template-columns: 1fr; gap: 48px; }
+            .programs-hero h1 { font-size: 38px; }
+            .assistance-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+   <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-people-roof"></i> LONG <span>Movement</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">Who We Are</a></li>
+                <li><a href="activities.html" class="nav-link">Activities</a></li>
+                <li><a href="programms.html" class="nav-link">Programs</a></li>
+                <li><a href="volunteers.html" class="nav-link">Volunteers</a></li>
+                <li><a href="donation.html" class="btn btn-cta">Donation</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SUB-HEADER -->
+    <header class="programs-hero">
+        <div class="container">
+            <h1 class="reveal">Our Strategic Actions</h1>
+            <p class="reveal delay-1">Explore our programs aimed at healing frameworks and empowering human capital.</p>
+        </div>
+    </header>
+
+    <!-- CORE PROGRAMS INTRO & GRID -->
+    <main class="container">
+        <section>
+            <div class="section-intro reveal">
+                <h2>Our Programs</h2>
+                <p>Sustainable initiatives built structurally to empower individual growth, community protection, and family unit long-term health.</p>
+            </div>
+
+            <div class="programs-grid">
+                <!-- Program 1 -->
+                <div class="program-card reveal">
+                    <div>
+                        <div class="program-icon"><i class="fa-solid fa-child"></i></div>
+                        <h3>Child Protection Program</h3>
+                        <p>Protecting vulnerable children through structural access to quality education, proper baseline nutrition, and protective community support spaces.</p>
+                    </div>
+                    <a href="#" class="program-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="program-card reveal delay-1">
+                    <div>
+                        <div class="program-icon"><i class="fa-solid fa-house-chimney-heart"></i></div>
+                        <h3>Family Empowerment</h3>
+                        <p>Supporting and preserving vulnerable family structures through sustainable educational workshops, mental health counseling, and direct community assistance panels.</p>
+                    </div>
+                    <a href="#" class="program-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="program-card reveal delay-2">
+                    <div>
+                        <div class="program-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                        <h3>Youth Leadership Development</h3>
+                        <p>Training and equipping young leaders through strategic personal development blueprints, targeted mentorship programs, and active team leadership activities.</p>
+                    </div>
+                    <a href="#" class="program-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="program-card reveal">
+                    <div>
+                        <div class="program-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3>Mental Resilience & Human Development</h3>
+                        <p>Promoting sustainable emotional resilience, deep psychological awareness education, and comprehensive personal transformation metrics.</p>
+                    </div>
+                    <a href="#" class="program-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Program 5 -->
+                <div class="program-card reveal delay-1">
+                    <div>
+                        <div class="program-icon"><i class="fa-solid fa-seedling"></i></div>
+                        <h3>Community Development</h3>
+                        <p>Fostering localized economic ecosystem health through structural community outreach, scalable humanitarian projects, learning programs, and local leader empowerment.</p>
+                    </div>
+                    <a href="#" class="program-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- HUMANITARIAN ASSISTANCE EXPANDED BANNER -->
+    <section class="humanitarian-section">
+        <div class="container humanitarian-wrapper">
+            <div class="humanitarian-content reveal">
+                <h2>Humanitarian Assistance</h2>
+                <p>We believe in immediate, targeted response modules when regional parameters threaten basic human survival. Our framework guarantees swift deployment across key urgent areas to re-establish environmental stability.</p>
+                <button class="btn btn-cta">Support This Relief</button>
+            </div>
+            
+            <div class="assistance-grid">
+                <!-- Item 1 -->
+                <div class="assistance-box reveal delay-1">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h4>Food Distribution</h4>
+                </div>
+                <!-- Item 2 -->
+                <div class="assistance-box reveal delay-2">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <h4>Educational Support</h4>
+                </div>
+                <!-- Item 3 -->
+                <div class="assistance-box reveal delay-3">
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <h4>Emergency Response</h4>
+                </div>
+                <!-- Item 4 -->
+                <div class="assistance-box reveal delay-4">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <h4>Community Service</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 LONG – International Family Movement. All Rights Reserved.</p>
+            <p style="opacity: 0.5;">Human Dignity First.</p>
+        </div>
+    </footer>
+
+    <!-- INTERSECTION OBSERVER ANIMATION ENGINE -->
+    <script>
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

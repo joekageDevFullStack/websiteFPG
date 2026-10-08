@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Volunteer  – LONG – International Family Movement</title>
+    
+    <!-- Premium Google Fonts: Montserrat & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PREMIUM DESIGN SYSTEM --- */
+        :root {
+            --primary: #0284c7;        
+            --primary-light: #e0f2fe;  
+            --accent: #f59e0b;         
+            --accent-dark: #d97706;
+            --text-main: #0f172a;      
+            --text-muted: #475569;     
+            --bg-light: #f8fafc;       
+            --white: #ffffff;
+            --font-global: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-global);
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MODERN NAVBAR --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
+        .logo i { color: var(--primary); }
+        .logo span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary); }
+
+        /* --- VOLUNTEER SECTION LAYOUT --- */
+        .volunteer-wrapper {
+            max-width: 1240px;
+            margin: 150px auto 100px auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* Left Side: Content & Requirements */
+        .volunteer-info h1 {
+            font-size: 46px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .volunteer-info p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .requirements-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.01);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+        }
+
+        .requirements-container h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .req-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .req-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .req-item i {
+            color: #22c55e;
+            font-size: 18px;
+            background-color: #f0fdf4;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+       }
+        .btn-scroll-to-form {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--text-main);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 700;
+            margin-top: 32px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-scroll-to-form:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.15);
+        }
+
+        /* Right Side: Application Card & Form */
+        .application-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: 0 40px 80px rgba(15, 23, 42, 0.06);
+            border: 1px solid rgba(15, 23, 42, 0.02);
+        }
+
+        .application-card h2 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .application-card .form-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            outline: none;
+            font-family: var(--font-global);
+            transition: var(--transition);
+        }
+
+        .form-control:focus { 
+            border-color: var(--primary); 
+        }
+
+        select.form-control {
+            cursor: pointer;
+            background-color: var(--white);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Action Form Buttons */
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 18px;
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.15);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(245, 158, 11, 0.25);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            padding: 40px 0;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 968px) {
+            .volunteer-wrapper { grid-template-columns: 1fr; margin-top: 120px; gap: 48px; }
+            .volunteer-info h1 { font-size: 34px; }
+            .application-card { padding: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+   <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-people-roof"></i> LONG <span>Movement</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">Who We Are</a></li>
+                <li><a href="activities.html" class="nav-link">Activities</a></li>
+                <li><a href="programms.html" class="nav-link">Programs</a></li>
+                <li><a href="volunteers.html" class="nav-link">Volunteers</a></li>
+                <li><a href="donation.html" class="btn btn-cta">Donation</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN VOLUNTEER SECTION CONTENT -->
+    <main class="volunteer-wrapper">
+        
+        <!-- LEFT COLUMN: CONTEXT, REQUIREMENTS & REVEAL INFOS -->
+        <div class="volunteer-info reveal">
+            <h1>Become a Volunteer </h1>
+            <p>We welcome passionate individuals who want to make a positive difference in the lives of children and  families</p>
+            
+            <!-- Requirements Block -->
+            <div class="requirements-container">
+                <h3>Our Core Requirements</h3>
+                <ul class="req-list">
+                    <li class="req-item"><i class="fa-solid fa-check"></i> Respect</li>
+                    <li class="req-item"><i class="fa-solid fa-check"></i> Integrity</li>
+                    <li class="req-item"><i class="fa-solid fa-check"></i> Teamwork</li>
+                    <li class="req-item"><i class="fa-solid fa-check"></i> Commitment</li>
+                    <li class="req-item"><i class="fa-solid fa-check"></i> Child Protection Compliance</li>
+                </ul>
+            </div>
+
+            <!-- Trigger Button -->
+            <button type="button" class="btn-scroll-to-form" id="scroll-trigger">
+                Apply Now <i class="fa-solid fa-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- RIGHT COLUMN: INTERACTIVE FORM CONTAINER -->
+        <div class="application-card reveal" id="form-section">
+            <h2>Volunteer Application Form</h2>
+            <p class="form-subtitle">Fill out this secure questionnaire to join our next local deployment actions.</p>
+
+            <form id="volunteer-form" onsubmit="handleFormSubmission(event)">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" class="form-control" placeholder="Your first and last name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email-address">Email Address</label>
+                    <input type="email" id="email-address" class="form-control" placeholder="yourname@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <input for="province" class="form-control" > Region Location</input>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivation">Why do you want to join LONG?</label>
+                    <textarea id="motivation" class="form-control" placeholder="Tell us briefly about your motivation and skills..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">
+                    Submit Application <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LONG – International Family Movement. All Rights Reserved. | Human Dignity & Integrity First.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE ENGINE SCRIPT -->
+    <script>
+        // --- SCROLL TO FORM ACTION ---
+        document.getElementById('scroll-trigger').addEventListener('click', () => {
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // --- FORM SUBMISSION ACTION SIMULATION ---
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('full-name').value;
+            const location = document.getElementById('province').value;
+            
+            alert(`Thank you, ${name}! Your volunteer application for our operations  (${location.toUpperCase()}) has been recorded. Our team will contact you shortly.`);
+            
+            // Clear form
+            document.getElementById('volunteer-form').reset();
+        }
+
+        // --- INTERSECTION OBSERVER ENABLER ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

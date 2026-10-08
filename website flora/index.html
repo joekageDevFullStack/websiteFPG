@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONG – International Family Movement</title>
+    
+    <!-- Premium Google Fonts: Montserrat & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PREMIUM DESIGN SYSTEM --- */
+        :root {
+            --primary: #0284c7;        
+            --primary-light: #e0f2fe;  
+            --accent: #f59e0b;         
+            --accent-dark: #d97706;
+            --text-main: #0f172a;      
+            --text-muted: #475569;     
+            --bg-light: #f8fafc;       
+            --white: #ffffff;
+            --font-global: 'Montserrat', sans-serif;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Ultra-smooth professional ease-out */
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-global);
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* --- PROFESSIONAL SCROLL ANIMATION STATES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay utilities for sequential element reveals */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* --- MODERN BLUR NAVBAR --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .logo span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-muted);
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+            letter-spacing: -0.2px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 14px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            gap: 10px;
+            letter-spacing: -0.2px;
+        }
+
+        .btn-cta {
+            background-color: var(--text-main);
+            color: var(--white);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(2, 132, 199, 0.2);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(245, 158, 11, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--text-main);
+            transform: translateY(-3px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.65)), 
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            padding-top: 90px;
+        }
+
+        .hero-content {
+            max-width: 950px;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 28px;
+            letter-spacing: -2px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.65;
+            margin-bottom: 44px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            letter-spacing: -0.2px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 140px 0;
+        }
+
+        .section-header {
+            max-width: 750px;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        /* --- PILLARS / CARDS --- */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .pillar-card {
+            background-color: var(--bg-light);
+            padding: 48px 36px;
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .pillar-card:hover {
+            background-color: var(--white);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        }
+
+        .pillar-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--primary);
+            margin-bottom: 32px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+            transition: var(--transition);
+        }
+
+        .pillar-card:hover .pillar-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: rotate(-6deg);
+        }
+
+        .pillar-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* --- ABOUT & ASYMMETRIC STATS --- */
+        .about-section {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.25;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat-box {
+            background-color: var(--white);
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
+            transition: var(--transition);
+        }
+
+        .stat-box:nth-child(even) {
+            transform: translateY(24px); 
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+        }
+
+        .stat-box:nth-child(even):hover {
+            transform: translateY(20px);
+        }
+
+        .stat-number {
+            font-size: 46px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: -0.1px;
+        }
+
+        /* --- CLEAN FOOTER --- */
+        footer {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            padding: 120px 0 40px 0;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .footer-about .logo {
+            color: var(--white);
+            margin-bottom: 28px;
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 400px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background-color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+}
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 44px; }
+            .about-wrapper { grid-template-columns: 1fr; gap: 60px; }
+            .stat-box:nth-child(even) { transform: translateY(0); }
+            .stat-box:nth-child(even):hover { transform: translateY(-4px); }
+            .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { height: 80px; }
+            .menu-toggle { display: block; font-size: 24px; cursor: pointer; }
+            .nav-menu {
+                position: absolute;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 48px 32px;
+                gap: 32px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+                transition: var(--transition);
+                align-items: flex-start;
+            }
+            .nav-menu.active { left: 0; }
+            .hero-buttons { flex-direction: column; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION COMPONENT -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-people-roof"></i> LONG <span>Movement</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="#pillars" class="nav-link">Our Pillars</a></li>
+                <li><a href="about.html" class="nav-link">Who We Are</a></li>
+                <li><a href="activities.html" class="nav-link">Activities</a></li>
+                <li><a href="programms.html" class="nav-link">Programs</a></li>
+                <li><a href="volunteers.html" class="nav-link">Volunteers</a></li>
+                <li><a href="donation.html" class="btn btn-cta">Donation</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO COMPONENT -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Building Stronger Families, Transforming Communities</h1>
+            <p>We are an international humanitarian organization committed to protecting children, strengthening families, empowering youth, and building stronger communities through education, humanitarian action, leadership development, and sustainable social initiatives.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-accent">Support Our Mission <i class="fa-solid fa-arrow-right"></i></button>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE PILLARS COMPONENT -->
+    <section id="pillars">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Core Pillars</h2>
+                <p>The foundation of our actionable strategy to cultivate lasting generational change worldwide.</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card reveal delay-1">
+                    <div class="pillar-icon"><i class="fa-solid fa-child"></i></div>
+                    <h3>Protecting Children</h3>
+                    <p>Securing baseline safety, emotional sanctuary, and fundamental human rights for vulnerable infants and minors globally.</p>
+                </div>
+                <div class="pillar-card reveal delay-2">
+                    <div class="pillar-icon"><i class="fa-solid fa-house-chimney-heart"></i></div>
+                    <h3>Strengthening Families</h3>
+                    <p>Providing structural counseling, physical resources, and financial workshops to preserve and fortify family unities.</p>
+                </div>
+                <div class="pillar-card reveal delay-3">
+                    <div class="pillar-icon"><i class="fa-solid fa-users-line"></i></div>
+                    <h3>Empowering Youth</h3>
+                    <p>Mentoring teenage sectors via modern technology courses, skill cultivation, and active structural employment guidance.</p>
+                </div>
+                <div class="pillar-card reveal delay-4">
+                    <div class="pillar-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Sustainable Education</h3>
+                    <p>Constructing localized educational platforms and learning spaces to guarantee inclusive access to long-term knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- ABOUT AND REALTIME STATISTICS COMPONENT -->
+<section id="about" class="about-section">
+    <div class="container about-wrapper">
+        <div class="about-text reveal">
+            <h3>Driven by Compassion, Measured by Impact</h3>
+            <p>At LONG – International Family Movement, we target systemic societal vulnerability at its source: the household unit. By generating localized socioeconomic autonomy and ensuring protection protocols, we empower future leadership generations to build resilient frameworks from within.</p>
+            <button class="btn btn-cta">Read Our Annual Report <i class="fa-solid fa-file-pdf"></i></button>
+        </div>
+        <div class="stats-grid">
+            <!-- Stat 1 -->
+            <div class="stat-box reveal delay-1">
+                <div class="stat-number"><span class="counter-val" data-target="25">0</span>+</div>
+                <div class="stat-label">Countries Reached</div>
+            </div>
+            <!-- Stat 2 -->
+            <div class="stat-box reveal delay-2">
+                <div class="stat-number"><span class="counter-val" data-target="150">0</span>K+</div>
+                <div class="stat-label">Families Supported</div>
+            </div>
+            <!-- Stat 3 -->
+            <div class="stat-box reveal delay-3">
+                <div class="stat-number"><span class="counter-val" data-target="45">0</span></div>
+                <div class="stat-label">Active Initiatives</div>
+            </div>
+            <!-- Stat 4 -->
+            <div class="stat-box reveal delay-4">
+                <div class="stat-number"><span class="counter-val" data-target="92">0</span>%</div>
+                <div class="stat-label">Fund Efficiency</div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- FOOTER COMPONENT -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <div class="logo"><i class="fa-solid fa-people-roof"></i> LONG</div>
+                <p>International Family Movement is a registered non-governmental organization (NGO) operating globally to heal, educate, and empower community infrastructures.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Our Actions</h4>
+                <ul>
+                    <li><a href="#">Child Welfare</a></li>
+                    <li><a href="#">Education Access</a></li>
+                    <li><a href="#">Emergency Relief</a></li>
+                    <li><a href="#">Local Leadership</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Partnerships</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 LONG – International Family Movement. All Rights Reserved.</p>
+            <p style="opacity: 0.4;">Human Dignity First.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS & INTERSECTION OBSERVER ENGINE -->
+    <script>
+        // --- MOBILE MENU NAVIGATION INTERACTION ---
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if(navMenu.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // --- ACTIVE LINK SELECTION ON SCROLL ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 140)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- PROFESSIONAL INTERSECTION OBSERVER ANIMATION ENGINE ---
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Optimize DOM engine after trigger
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+    </script>
+    <script>
+        // --- ENGINE D'ANIMATION DES COMPTEURS ---
+const initCounters = () => {
+    const counters = document.querySelectorAll('.counter-val');
+    const speed = 1500; // Durée totale de l'animation en millisecondes (1.5s)
+
+    counters.forEach(counter => {
+        const animate = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            
+            // Calcul de la vitesse d'incrémentation proportionnelle
+            const increment = target / (speed / 16); // ~16ms par frame (60fps)
+
+            if (count < target) {
+                // On incrémente et on arrondit à l'entier supérieur
+                counter.innerText = Math.ceil(count + increment);
+                // On planifie la frame suivante
+                setTimeout(animate, 16);
+            } else {
+                // Sécurité pour afficher exactement la valeur cible à la fin
+                counter.innerText = target;
+            }
+        };
+        
+        animate();
+    });
+};
+
+// --- INTEGRATION DANS L'INTERSECTION OBSERVER EXISTANT ---
+// On observe la grille des statistiques pour lancer le compteur au défilement
+const statsGrid = document.querySelector('.stats-grid');
+if (statsGrid) {
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // On attend un tout petit peu que la carte apparaisse (reveal), puis on anime le chiffre
+                setTimeout(initCounters, 200);
+                observer.unobserve(entry.target); // On arrête d'observer pour ne pas relancer l'animation
+            }
+        });
+    }, { threshold: 0.1 });
+
+    statsObserver.observe(statsGrid);
+}
+    </script>
+</body>
+</html>

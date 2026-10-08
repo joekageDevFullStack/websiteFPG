@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation – LONG – International Family Movement</title>
+    
+    <!-- Premium Google Fonts: Montserrat & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PREMIUM DESIGN SYSTEM --- */
+        :root {
+            --primary: #0284c7;        
+            --primary-light: #e0f2fe;  
+            --accent: #f59e0b;         
+            --accent-dark: #d97706;
+            --text-main: #0f172a;      
+            --text-muted: #475569;     
+            --bg-light: #f8fafc;       
+            --white: #ffffff;
+            --font-global: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-global);
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MODERN NAVBAR --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
+        .logo i { color: var(--primary); }
+        .logo span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary); }
+
+        /* --- DONATION PAGE LAYOUT --- */
+        .donation-wrapper {
+            max-width: 1240px;
+            margin: 150px auto 100px auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* Left Side: Content & Impact */
+        .donation-info h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .donation-info p {
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .impact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .impact-item {
+            background-color: var(--white);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+            border: 1px solid rgba(15, 23, 42, 0.03);
+        }
+
+        .impact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+       }
+
+        .impact-text h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .impact-text p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Right Side: Interactive Form Container */
+        .donation-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: 0 40px 80px rgba(15, 23, 42, 0.06);
+            border: 1px solid rgba(15, 23, 42, 0.02);
+        }
+
+        /* Tabs/Frequency Toggle */
+        .frequency-toggle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--bg-light);
+            padding: 6px;
+            border-radius: 14px;
+            margin-bottom: 32px;
+        }
+
+        .freq-btn {
+            padding: 12px;
+            border: none;
+            background: none;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .freq-btn.active {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+        }
+
+        /* Amount Selection Grid */
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .amount-btn {
+            background-color: var(--white);
+            border: 2px solid #e2e8f0;
+            padding: 18px 10px;
+            border-radius: var(--radius-md);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .amount-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .amount-btn.active {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Custom Amount Input Field */
+        .custom-amount-wrapper {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .custom-amount-wrapper span {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 16px 20px 16px 45px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .custom-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Form Details Field */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            outline: none;
+            font-family: var(--font-global);
+            transition: var(--transition);
+        }
+
+        .form-control:focus { border-color: var(--primary); }
+
+        /* Submit / Donation Buttons */
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 18px;
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.15);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(245, 158, 11, 0.25);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+            font-size: 24px;
+            color: #94a3b8;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            padding: 40px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 968px) {
+            .donation-wrapper { grid-template-columns: 1fr; margin-top: 120px; gap: 48px; }
+            .donation-info h1 { font-size: 36px; }
+            .donation-card { padding: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+   <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-people-roof"></i> LONG <span>Movement</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">Who We Are</a></li>
+                <li><a href="activities.html" class="nav-link">Activities</a></li>
+                <li><a href="programms.html" class="nav-link">Programs</a></li>
+                <li><a href="volunteers.html" class="nav-link">Volunteers</a></li>
+                <li><a href="donation.html" class="btn btn-cta">Donation</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN DONATION SECTION WRAPPER -->
+    <main class="donation-wrapper">
+        
+        <!-- LEFT COLUMN: CONTEXT & VALUE VALUE PROPOSITION -->
+        <div class="donation-info reveal">
+            <h1>Your Support Empowers Generations</h1>
+            <p>Every contribution directly finances on-the-ground interventions. By making a donation to LONG – International Family Movement, you provide immediate humanitarian aid, psychological relief, structural schooling platforms, and life-changing development tools to children and households in the Philippines, Cameroon, and vulnerable global territories.</p>
+            
+            <div class="impact-list">
+                <div class="impact-item">
+                    <div class="impact-icon"><i class="fa-solid fa-kit-medical"></i></div>
+                    <div class="impact-text">
+                        <h3>Emergency Assistance</h3>
+                        <p>Provides critical nutritional modules, sanitary packages, and clean water deployment units directly to isolated environments.</p>
+                    </div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="impact-text">
+                        <h3>Educational Facilities</h3>
+                        <p>Funds classroom supplies, structural updates, and modern technology curriculums for vulnerable youth leaders.</p>
+                    </div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <div class="impact-text">
+                        <h3>Child Protection Infrastructure</h3>
+                        <p>Secures sustainable psychological counseling frameworks, physical safety havens, and ongoing family preservation initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: INTERACTIVE DONATION ENGINE CARD -->
+        <div class="donation-card reveal">
+            <!-- Frequency toggle -->
+            <div class="frequency-toggle">
+                <button type="button" class="freq-btn active" id="btn-one-time">One-Time Don</button>
+                <button type="button" class="freq-btn" id="btn-monthly">Monthly Support</button>
+            </div>
+
+            <!-- Amount grids -->
+            <div class="amount-grid">
+                <button type="button" class="amount-btn active" data-amount="25">$25</button>
+                <button type="button" class="amount-btn" data-amount="50">$50</button>
+                <button type="button" class="amount-btn" data-amount="100">$100</button>
+                <button type="button" class="amount-btn" data-amount="250">$250</button>
+                <button type="button" class="amount-btn" data-amount="500">$500</button>
+                <button type="button" class="amount-btn" id="custom-trigger">Other</button>
+            </div>
+
+            <!-- Custom Input Box -->
+            <div class="custom-amount-wrapper">
+                <span>$</span>
+                <input type="number" class="custom-input" id="amount-field" value="25" placeholder="Enter custom amount">
+            </div>
+
+            <!-- Billing Info Fields -->
+            <form id="donation-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email-address">Email Address</label>
+                    <input type="email" id="email-address" class="form-control" placeholder="johndoe@example.com" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">
+                    Complete Donation of <span id="submit-total">$25</span> <i class="fa-solid fa-heart"></i>
+                </button>
+            </form>
+
+            <!-- Secure Indicators -->
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-solid fa-lock" style="font-size: 16px; align-self: center; margin-left: 10px; color:#22c55e;"> Secure Payment</i>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LONG – International Family Movement. All Rights Reserved. | Transparency & Human Dignity First.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE ENGINE SCRIPT -->
+    <script>
+        // --- SEAMLESS DONATION INTERACTIVE LOGIC ---
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        const amountField = document.getElementById('amount-field');
+        const submitTotal = document.getElementById('submit-total');
+        const freqButtons = document.querySelectorAll('.freq-btn');
+
+        // Handle predefined amount clicks
+        amountButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                amountButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                if (button.dataset.amount) {
+                    amountField.value = button.dataset.amount;
+                    updateSubmitText(button.dataset.amount);
+                } else {
+                    amountField.focus();
+                }
+            });
+        });
+
+        // Sync inputs typed directly inside text field
+        amountField.addEventListener('input', (e) => {
+            amountButtons.forEach(btn => btn.classList.remove('active'));
+            if(['25','50','100','250','500'].includes(e.target.value)) {
+                document.querySelector(`[data-amount="${e.target.value}"]`).classList.add('active');
+            } else {
+                document.getElementById('custom-trigger').classList.add('active');
+            }
+            updateSubmitText(e.target.value);
+        });
+
+        // Frequency switches
+        freqButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                freqButtons.forEach(f => f.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        function updateSubmitText(value) {
+            submitTotal.textContent = value ? `$${value}` : '$0';
+        }
+
+        // Handle Simulation submission 
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const val = amountField.value;
+            alert(`Thank you for your generosity! A simulation process for a donation of $${val} has been initiated successfully.`);
+        }
+
+        // --- INTERSECTION OBSERVER ENABLER ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
